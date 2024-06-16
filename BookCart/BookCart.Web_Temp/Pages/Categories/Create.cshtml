@@ -1,0 +1,32 @@
+﻿@page
+@model BookCart.Web_Temp.Pages.Categories.CreateModel
+
+<form method="post">
+    <div class="border p-1 mt-1">
+        <div class="row pb-1">
+            <h2 class="text-primary">Create Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mb-2 row p-1">
+            <label asp-for="Category.Name" class="p-0"></label>
+            <input asp-for="Category.Name" class="form-control" />
+            <span asp-validation-for="Category.Name" class="text-warning"></span>
+        </div>
+        <div class="mb-2 row p-1">
+            <label asp-for="Category.DisplayOrder" class="p-0">Display Order</label>
+            <input asp-for="Category.DisplayOrder" class="form-control" />
+            <span asp-validation-for="Category.DisplayOrder" class="text-warning"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-page="/categories/index" class="btn btn-danger" style="width:150px">
+            Back
+        </a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
