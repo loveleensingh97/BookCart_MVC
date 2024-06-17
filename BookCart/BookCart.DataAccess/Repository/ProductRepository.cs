@@ -20,7 +20,23 @@ namespace BookCart.DataAccess.Repository
 
         public void Update(Product product)
         {
-            dbContext.Products.Update(product);
+            var objProduct = dbContext.Products.FirstOrDefault(u => u.Id == product.Id);
+            if (objProduct != null)
+            {
+                objProduct.Title = product.Title;
+                objProduct.Description = product.Description;
+                objProduct.CategoryId = product.CategoryId;
+                objProduct.ISBN = product.ISBN;
+                objProduct.Price = product.Price;
+                objProduct.Author = product.Author;
+                objProduct.ListPrice = product.ListPrice;
+                objProduct.Price50 = product.Price50;
+                objProduct.Price100 = product.Price100;
+                if(product.ImageUrl != null)
+                {
+                    objProduct.ImageUrl = product.ImageUrl;
+                }
+            }
         }
     }
 }
