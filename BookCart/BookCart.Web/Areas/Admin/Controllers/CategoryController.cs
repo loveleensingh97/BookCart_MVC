@@ -1,21 +1,24 @@
 ﻿using BookCart.DataAccess.Data;
+using BookCart.DataAccess.Repository;
+using BookCart.DataAccess.Repository.IRepository;
 using BookCart.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookCart.Web.Controllers
+namespace BookCart.Web.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ApplicationDbContext dbContext)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            this.dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            List<Category> categoryList = dbContext.Categories.ToList();
+            List<Category> categoryList = _unitOfWork.CategoryRepository.GetAll().ToList();
             return View(categoryList);
         }
 
@@ -33,8 +36,8 @@ namespace BookCart.Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                dbContext.Categories.Add(category);
-                dbContext.SaveChanges();
+                _unitOfWork.CategoryRepository.Add(category);
+                _unitOfWork.Save();
                 TempData["Success"] = "Category Created Successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -48,8 +51,9 @@ namespace BookCart.Web.Controllers
                 return NotFound();
             }
             //Category category = dbContext.Categories.Find(id);
-            Category? category = dbContext.Categories.FirstOrDefault(c => c.Id == id);
+            //Category? category = dbContext.Categories.FirstOrDefault(c => c.Id == id);
             //Category? category = dbContext.Categories.Where(c => c.Id == id).FirstOrDefault();
+            Category? category = _unitOfWork.CategoryRepository.Get(c => c.Id == id);
 
             if (category == null)
             {
@@ -63,8 +67,8 @@ namespace BookCart.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                dbContext.Categories.Update(category);
-                dbContext.SaveChanges();
+                _unitOfWork.CategoryRepository.Update(category);
+                _unitOfWork.Save();
                 TempData["Success"] = "Category Updated Successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -77,7 +81,7 @@ namespace BookCart.Web.Controllers
             {
                 return NotFound();
             }
-            Category? category = dbContext.Categories.FirstOrDefault(c => c.Id == id);
+            Category? category = _unitOfWork.CategoryRepository.Get(c => c.Id == id);
 
             if (category == null)
             {
@@ -89,13 +93,13 @@ namespace BookCart.Web.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = dbContext.Categories.Find(id);
+            Category? obj = _unitOfWork.CategoryRepository.Get(c => c.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            dbContext.Categories.Remove(obj);
-            dbContext.SaveChanges();
+            _unitOfWork.CategoryRepository.Remove(obj);
+            _unitOfWork.Save();
             TempData["Success"] = "Category Deleted Successfully";
             return RedirectToAction("Index", "Category");
         }
