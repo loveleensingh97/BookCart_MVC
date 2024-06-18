@@ -2,11 +2,14 @@
 using BookCart.DataAccess.Repository;
 using BookCart.DataAccess.Repository.IRepository;
 using BookCart.Models;
+using BookCart.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookCart.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticDetails.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

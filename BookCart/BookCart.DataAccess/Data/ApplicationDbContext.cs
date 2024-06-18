@@ -15,6 +15,12 @@ namespace BookCart.DataAccess.Data
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Company> Companies { get; set; }
+
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -123,6 +129,39 @@ namespace BookCart.DataAccess.Data
                     Price100 = 20,
                     CategoryId = 3,
                     ImageUrl = ""
+                }
+                );
+
+            modelBuilder.Entity<Company>().HasData(
+                new Company
+                {
+                    Id = 1,
+                    Name = "Infosys Limited",
+                    StreetAddress = "Mysore, Bangalore",
+                    City = "Mysore",
+                    PostalCode = "500000",
+                    State = "KN",
+                    PhoneNumber = "9876543210"
+                },
+                new Company
+                {
+                    Id = 2,
+                    Name = "Genpact Limited",
+                    StreetAddress = "ABC, Sector-135",
+                    City = "Noida",
+                    PostalCode = "121001",
+                    State = "UP",
+                    PhoneNumber = "9876543200"
+                },
+                new Company
+                {
+                    Id = 3,
+                    Name = "EPAM Systems",
+                    StreetAddress = "DLF Downtown, Sector 25",
+                    City = "Gurugram",
+                    PostalCode = "122010",
+                    State = "HR",
+                    PhoneNumber = "9876543000"
                 }
                 );
         }

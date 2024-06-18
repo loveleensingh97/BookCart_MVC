@@ -1,12 +1,15 @@
 ﻿using BookCart.DataAccess.Repository.IRepository;
 using BookCart.Models;
 using BookCart.Models.ViewModels;
+using BookCart.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookCart.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticDetails.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -112,9 +115,9 @@ namespace BookCart.Web.Areas.Admin.Controllers
         //    {
         //        return NotFound();
         //    }
-        //    //Product product = dbContext.Products.Find(id);
-        //    //Product? product = dbContext.Products.FirstOrDefault(c => c.Id == id);
-        //    //Product? product = dbContext.Products.Where(c => c.Id == id).FirstOrDefault();
+        //    //Product product = dbContext.Companies.Find(id);
+        //    //Product? product = dbContext.Companies.FirstOrDefault(c => c.Id == id);
+        //    //Product? product = dbContext.Companies.Where(c => c.Id == id).FirstOrDefault();
         //    Product? product = _unitOfWork.ProductRepository.Get(c => c.Id == id);
 
         //    if (product == null)
