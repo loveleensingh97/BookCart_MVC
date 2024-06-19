@@ -18,6 +18,10 @@ namespace BookCart.DataAccess.Repository.IRepository
 
         IApplicationUserRepository ApplicationUserRepository { get; }
 
+        IOrderHeaderRepository OrderHeaderRepository { get; }
+
+        IOrderDetailRepository OrderDetailRepository { get; }
+
         void Save();
     }
 }
