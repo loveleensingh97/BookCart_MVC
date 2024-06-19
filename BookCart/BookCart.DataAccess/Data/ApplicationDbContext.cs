@@ -25,6 +25,10 @@ namespace BookCart.DataAccess.Data
         {
             base.OnModelCreating(modelBuilder);
 
+        //    modelBuilder.Entity<ShoppingCart>()
+        //.Property(sc => sc.Id)
+        //.ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {
