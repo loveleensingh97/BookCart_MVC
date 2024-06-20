@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCart.Web", "BookCart.Web\BookCart.Web.csproj", "{C14091DD-158F-4796-9ADC-E9E3EC39D93E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCart.Web", "BookCart.Web\BookCart.Web.csproj", "{C14091DD-158F-4796-9ADC-E9E3EC39D93E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCart.DataAccess", "BookCart.DataAccess\BookCart.DataAccess.csproj", "{A20610C7-093D-4EC1-9C6D-F891769DA9F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCart.DataAccess", "BookCart.DataAccess\BookCart.DataAccess.csproj", "{A20610C7-093D-4EC1-9C6D-F891769DA9F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCart.Models", "BookCart.Models\BookCart.Models.csproj", "{A06D023A-4859-443E-8A0C-F30A18E0AA8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCart.Models", "BookCart.Models\BookCart.Models.csproj", "{A06D023A-4859-443E-8A0C-F30A18E0AA8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCart.Utility", "BookCart.Utility\BookCart.Utility.csproj", "{62FED700-4776-4EDA-88F8-E585078A0916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCart.Utility", "BookCart.Utility\BookCart.Utility.csproj", "{62FED700-4776-4EDA-88F8-E585078A0916}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
